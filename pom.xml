@@ -100,6 +100,13 @@
 	      <name>Subhash Technologies Releases Nexus Repository</name>
 	      <url>http://65.0.75.66:8081/repository/wallmart-releases/</url>
 	    </repository>
+		
+	<snapshotRepository>
+	      <id>nexus</id>
+	      <name>Subhash Technologies Snapshot Nexus Repository </name>
+	      <url>http://65.0.75.66:8081/repository/wallmart-snapshots/</url>
+		    
+	    </snapshotRepository>	
 	    
 	    
 	    
@@ -142,6 +149,26 @@
 					<wtpContextName>maven-web-application</wtpContextName>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
 			
 </plugins>
 	</build>
